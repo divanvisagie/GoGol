@@ -73,9 +73,9 @@ func main() {
 
 	program := initOpenGL()
 
-	triangleObject := MakeTriangle()
-
-	scene := []DrawingObject{triangleObject}
+	scene := []DrawingObject{
+		MakeSquare(),
+	}
 
 	for !window.ShouldClose() {
 		draw(scene, window, program)

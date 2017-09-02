@@ -30,14 +30,6 @@ const (
 	` + "\x00"
 )
 
-var (
-	triangle = []float32{
-		0, 0.5, 0, //top
-		-0.5, -0.5, 0, //left
-		0.5, -0.5, 0, //right
-	}
-)
-
 func initGlfw() *glfw.Window {
 
 	if err := glfw.Init(); err != nil {
@@ -83,30 +75,13 @@ func initOpenGL() uint32 {
 	return prog
 }
 
-/// make vertex array object
-func makeVao(points []float32) uint32 {
-	var vbo uint32
-	gl.GenBuffers(1, &vbo)
-	gl.BindBuffer(gl.ARRAY_BUFFER, vbo)
-	gl.BufferData(gl.ARRAY_BUFFER, 4*len(points), gl.Ptr(points), gl.STATIC_DRAW)
-
-	var vao uint32
-	gl.GenVertexArrays(1, &vao)
-	gl.BindVertexArray(vao)
-	gl.EnableVertexAttribArray(0)
-	gl.BindBuffer(gl.ARRAY_BUFFER, vbo)
-	gl.VertexAttribPointer(0, 3, gl.FLOAT, false, 0, nil)
-
-	return vao
-}
-
-func draw(object uint32, window *glfw.Window, program uint32) {
+func draw(object DrawingObject, window *glfw.Window, program uint32) {
 	gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 	gl.UseProgram(program)
 
 	//draw the object
-	gl.BindVertexArray(object)
-	gl.DrawArrays(gl.TRIANGLES, 0, int32(len(triangle)/3))
+	gl.BindVertexArray(object.object)
+	gl.DrawArrays(gl.TRIANGLES, 0, int32(len(object.points)/3))
 
 	glfw.PollEvents()
 	window.SwapBuffers()
@@ -143,7 +118,7 @@ func main() {
 
 	program := initOpenGL()
 
-	triangleObject := makeVao(triangle)
+	triangleObject := MakeTriangle()
 
 	for !window.ShouldClose() {
 		draw(triangleObject, window, program)

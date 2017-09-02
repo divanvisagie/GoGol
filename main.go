@@ -66,7 +66,7 @@ func draw(cells [][]*cell, window *glfw.Window, program uint32) {
 	window.SwapBuffers()
 }
 
-const fpsLock = 2
+const fpsLock = 15
 
 func main() {
 	runtime.LockOSThread()

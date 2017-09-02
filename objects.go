@@ -24,35 +24,6 @@ func makeVao(points []float32) uint32 {
 	return vao
 }
 
-//Make a triangle to draw
-func MakeTriangle() DrawingObject {
-
-	triangle := []float32{
-		0, 0.5, 0, //top
-		-0.5, -0.5, 0, //left
-		0.5, -0.5, 0, //right
-	}
-
-	vao := makeVao(triangle)
-	return DrawingObject{triangle, vao}
-}
-
-//Make a square to draw
-func MakeSquare() DrawingObject {
-	square := []float32{
-		-0.5, 0.5, 0,
-		-0.5, -0.5, 0,
-		0.5, -0.5, 0,
-
-		-0.5, 0.5, 0,
-		0.5, 0.5, 0,
-		0.5, -0.5, 0,
-	}
-
-	vao := makeVao(square)
-	return DrawingObject{square, vao}
-}
-
 type cell struct {
 	drawingObject DrawingObject
 	x             int

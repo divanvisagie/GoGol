@@ -51,15 +51,17 @@ func initOpenGL() uint32 {
 	return prog
 }
 
-func draw(objects []DrawingObject, window *glfw.Window, program uint32) {
+func draw(cells [][]*cell, window *glfw.Window, program uint32) {
 	gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 	gl.UseProgram(program)
 
-	//draw the objects
-	for _, o := range objects {
-		gl.BindVertexArray(o.object)
-		gl.DrawArrays(gl.TRIANGLES, 0, int32(len(o.points)/3))
-	}
+	// for x := range cells {
+	// 	for _, c := range cells[x] {
+	// 		c.draw()
+	// 	}
+	// }
+
+	cells[2][3].draw()
 
 	glfw.PollEvents()
 	window.SwapBuffers()
@@ -73,11 +75,9 @@ func main() {
 
 	program := initOpenGL()
 
-	scene := []DrawingObject{
-		MakeSquare(),
-	}
+	cells := MakeCells()
 
 	for !window.ShouldClose() {
-		draw(scene, window, program)
+		draw(cells, window, program)
 	}
 }

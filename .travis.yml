@@ -9,6 +9,11 @@ addons:
     packages:
       - xorg-dev
 
+cache:
+  directories:
+    - $GOPATH/src
+    - $GOPATH/pkg
+
 
 before_install:
   - export DISPLAY=:99.0

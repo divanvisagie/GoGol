@@ -14,12 +14,10 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-before_script:
-  - go get github.com/go-gl/gl/v4.1-core/gl
-  - go get github.com/go-gl/glfw/v3.2/glfw
-
 
 script: 
+  - go get github.com/go-gl/gl/v4.1-core/gl
+  - go get github.com/go-gl/glfw/v3.2/glfw
   - go build
   - rm GoGol
 

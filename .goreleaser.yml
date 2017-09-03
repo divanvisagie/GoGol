@@ -9,6 +9,13 @@ builds:
     goarch:
       - amd64
 
+  ignore:
+    - goos: darwin
+      goarch: 386
+    - goos: linux
+      goarch: 386
+
+
 archive:
   format_overrides:
     - goos: windows

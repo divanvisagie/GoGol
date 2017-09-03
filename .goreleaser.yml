@@ -5,15 +5,8 @@ builds:
     goos:
       - windows
       - darwin
-      - linux
     goarch:
       - amd64
-
-ignore:
-  - goos: darwin
-    goarch: 386
-  - goos: linux
-    goarch: 386
 
 
 archive:

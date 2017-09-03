@@ -24,6 +24,3 @@ script:
   - go get github.com/go-gl/glfw/v3.2/glfw
   - go build
   - rm GoGol
-
-after_success:
-  - test -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash

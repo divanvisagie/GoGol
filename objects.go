@@ -107,8 +107,8 @@ func (c *cell) liveNeighbors(cells [][]*cell) int {
 }
 
 const (
-	rows    = 10
-	columns = 10
+	rows    = 100
+	columns = 100
 )
 
 const threshold = 0.15 //chance of starting alive
@@ -116,7 +116,7 @@ const threshold = 0.15 //chance of starting alive
 func MakeCells() [][]*cell {
 	rand.Seed(time.Now().UnixNano())
 
-	cells := make([][]*cell, rows, rows)
+	cells := make([][]*cell, rows, columns)
 	for x := 0; x < rows; x++ {
 		for y := 0; y < columns; y++ {
 			c := newCell(x, y)

@@ -7,11 +7,11 @@ go:
 addons:
   apt:
     packages:
-      - libx11-dev
-      - mesa-common-dev
-      - libglu1-mesa-dev
-      - libxrandr-dev
-      - libxi-dev
+      # - libx11-dev
+      # - mesa-common-dev
+      # - libglu1-mesa-dev
+      # - libxrandr-dev
+      # - libxi-dev
       - xorg-dev
 
 
